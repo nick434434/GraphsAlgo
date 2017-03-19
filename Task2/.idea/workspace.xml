@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3c44bfb1-0a7c-42d3-abb4-5e82daa08e64" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -126,7 +125,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1489959970027</updated>
-      <workItem from="1489959978018" duration="619000" />
+      <workItem from="1489959978018" duration="640000" />
     </task>
     <task id="LOCAL-00001" summary="First commit (initializing)">
       <created>1489960087841</created>
@@ -149,11 +148,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489960528974</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Okay, this time I finally realize what to do!">
+      <created>1489960607696</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1489960607696</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="619000" />
+    <option name="totallyTimeSpent" value="640000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -188,7 +194,8 @@
     <MESSAGE value="First commit (initializing)" />
     <MESSAGE value="Hello, world!" />
     <MESSAGE value="Khm, khm..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Khm, khm..." />
+    <MESSAGE value="Okay, this time I finally realize what to do!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Okay, this time I finally realize what to do!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
