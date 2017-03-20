@@ -15,7 +15,7 @@ unsigned int R1, C1, R2, C2;
 
 
 vector<vector<int>> operator+(vector<vector<int>> lhs, vector<vector<int>> rhs) {
-    vector<vector<int>> res = {0};
+    vector<vector<int>> res = {};
     size_t n = lhs.size();
 
     if (n != rhs.size())
@@ -31,7 +31,7 @@ vector<vector<int>> operator+(vector<vector<int>> lhs, vector<vector<int>> rhs) 
     return res;
 }
 
-void inputGraphs(ifstream fin) {
+void inputGraphs(ifstream& fin) {
     fin >> N >> R1 >> C1 >> R2 >> C2;
     G1.resize(N);
     for (size_t i = 0; i < N; i++) {
