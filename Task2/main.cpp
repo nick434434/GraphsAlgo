@@ -226,7 +226,7 @@ int bfs_numSteps(int s) {
         for (auto to : G[v]) {
             if (!used[to]) {
                 used[to] = true;
-                q.push (to);
+                q.push(to);
                 d[to] = d[v] + 1;
                 p[to] = v;
             }
