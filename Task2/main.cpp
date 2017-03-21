@@ -3,7 +3,7 @@
 #include <fstream>
 #include <algorithm>
 #include <queue>
-
+#include <map>
 
 using std::cout;
 using std::endl;
@@ -14,6 +14,7 @@ using std::find;
 using std::pair;
 using std::make_pair;
 using std::queue;
+using std::map;
 
 
 enum Shifts {RIGHT, DOWN, LEFT, UP, NONE};
@@ -63,19 +64,26 @@ public:
         }
     }
 
-    const bool operator==(Vertex v) {
+    bool operator==(Vertex v) const {
         return (this->i1 == v.i1) && (this->i2 == v.i2) && (this->j1 == v.j1) && (this->j2 == v.j2);
     }
 
-    const bool operator!=(Vertex v) {
+    bool operator!=(Vertex v) const {
         return !(*this == v);
+    }
+
+    bool operator<(Vertex v) const {
+        long d1 = i1 + 100*i2 + 10000 *j1 + 1000000 * j2;
+        long d2 = v.i1 + 100 * v.i2 + 10000 * v.j1 + 1000000 * v.j2;
+        return d1 < d2;
     }
 };
 
+
 Shifts shifts[4] = {RIGHT, DOWN, LEFT, UP};
-vector<Vertex> vertecies;
+map<Vertex, int> vertecies;
 vector<vector<int>> G1, G2, G;
-int N;
+int N, numV;
 unsigned int R1, C1, R2, C2;
 
 
@@ -107,14 +115,14 @@ vector<vector<int>> operator+(vector<vector<int>> lhs, vector<vector<int>> rhs) 
 
     if (n != rhs.size())
         return res;
-    
+
     res.resize(n);
     for (size_t i = 0; i < n; i++) {
         res[i].resize(n);
         for (size_t j = 0; j < n; j++)
             res[i][j] = lhs[i][j] + rhs[i][j];
     }
-    
+
     return res;
 }
 
@@ -123,28 +131,18 @@ void inputGraphs(ifstream& fin) {
     G1.resize(N);
     for (size_t i = 0; i < N; i++) {
         G1[i].resize(N);
-        for (size_t j = 0; j < N; j++)
+        for (size_t j = 0; j < N; j++) {
             fin >> G1[i][j];
+        }
     }
     G2.resize(N);
     for (size_t i = 0; i < N; i++) {
         G2[i].resize(N);
-        for (size_t j = 0; j < N; j++)
+        for (size_t j = 0; j < N; j++) {
             fin >> G2[i][j];
+        }
     }
     fin.close();
-}
-
-unsigned int tryFind() {
-    vector<vector<int>> G3 = G1 + G2;
-
-    unsigned int numSteps = 0;
-
-    for (size_t i = 1; i < N; i++)
-        numSteps += 2 + G3[0][N - i - 1] + G3[i][N - 1];
-    numSteps += G3[N - 1][N - 1] + 1;
-
-    return numSteps;
 }
 
 Vertex move(Vertex v, Shifts shift) {
@@ -167,45 +165,43 @@ Vertex move(Vertex v, Shifts shift) {
 }
 
 void makeGraph() {
-    vertecies.resize(N*N*N*N, Vertex());
     int cnt = 0;
 
     for (size_t i1 = 0; i1 < N; i1++)
         for (size_t j1 = 0; j1 < N; j1++)
             for (size_t i2 = 0; i2 < N; i2++)
                 for (size_t j2 = 0; j2 < N; j2++) {
-                    auto it = find(vertecies.begin(), vertecies.end(), Vertex(i1, j1, i2, j2));
                     int x = 0;
-                    if (it != vertecies.end())
-                        x = it - vertecies.begin();
-                    else
+                    if (!G1[i1][j1] && !G2[i2][j2])
                         x = cnt++;
-                    vertecies[x] = Vertex(i1, j1, i2, j2);
+                    else
+                        continue;
+                    vertecies.emplace(Vertex(i1, j1, i2, j2), x);
                 }
+    numV = cnt;
 
-    G.resize(N*N*N*N);
-    for (size_t v = 0; v < N*N*N*N; v++) {
-        G[v].reserve(4);
-        if (G1[vertecies[v].i1][vertecies[v].j1] == 1 || G2[vertecies[v].i2][vertecies[v].j2] == 1)
-            continue;
+    G.resize(numV);
+    for (auto& v : vertecies) {
+        G[v.second].reserve(4);
 
         for (auto& shift : shifts) {
-            Vertex to = move(vertecies[v], shift);
+
+            Vertex to = move(v.first, shift);
             if (to != Vertex()) {
                 if (G1[to.i1][to.j1] == 0 && G2[to.i2][to.j2] == 0) {
-                    G[v].push_back(find(vertecies.begin(), vertecies.end(), to) - vertecies.begin());
+                    G[v.second].push_back(vertecies[to]);
                     continue;
                 }
                 if (G1[to.i1][to.j1] == 1 && G2[to.i2][to.j2] == 0) {
                     to.move(reverseShift(shift), 0);
-                    if (vertecies[v] != to)
-                        G[v].push_back(find(vertecies.begin(), vertecies.end(), to) - vertecies.begin());
+                    if (v.first != to)
+                        G[v.second].push_back(vertecies[to]);
                     continue;
                 }
                 if (G1[to.i1][to.j1] == 0 && G2[to.i2][to.j2] == 1) {
                     to.move(reverseShift(shift), 1);
-                    if (vertecies[v] != to)
-                        G[v].push_back(find(vertecies.begin(), vertecies.end(), to) - vertecies.begin());
+                    if (v.first != to)
+                        G[v.second].push_back(vertecies[to]);
                     continue;
                 }
             }
@@ -216,8 +212,11 @@ void makeGraph() {
 int bfs_numSteps(int s) {
     queue<int> q;
     q.push(s);
-    vector<bool> used(N*N*N*N, false);
-    vector<int> d(N*N*N*N), p(N*N*N*N);
+    vector<bool> used;
+    vector<int> d, p;
+    used.resize(numV, false);
+    d.resize(numV, 0);
+    p.resize(numV, -1);
     used[s] = true;
     p[s] = -1;
     d[s] = 0;
@@ -246,7 +245,7 @@ int main() {
 
     ofstream fout("output.txt");
 
-    int s = find(vertecies.begin(), vertecies.end(), Vertex(R1, C1, R2, C2)) - vertecies.begin();
+    int s = vertecies[Vertex(R1, C1, R2, C2)];
     fout << bfs_numSteps(s);
 
     fout.close();

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Git_Repo/GraphsAlgo/Task2/main.cpp
+iostream
+-
+vector
+-
+fstream
+-
+algorithm
+-
+queue
+-
+map
+-
+

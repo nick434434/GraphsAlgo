@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/nick434434/GitRepo/GraphsAlgo/Task2/main.cpp" "/home/nick434434/GitRepo/GraphsAlgo/Task2/cmake-build-debug/CMakeFiles/Task2.dir/main.cpp.o"
+  "D:/Git_Repo/GraphsAlgo/Task2/main.cpp" "D:/Git_Repo/GraphsAlgo/Task2/cmake-build-debug/CMakeFiles/Task2.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
