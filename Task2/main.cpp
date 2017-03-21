@@ -2,6 +2,8 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
+#include <queue>
+
 
 using std::cout;
 using std::endl;
@@ -11,6 +13,7 @@ using std::ofstream;
 using std::find;
 using std::pair;
 using std::make_pair;
+using std::queue;
 
 
 enum Shifts {RIGHT, DOWN, LEFT, UP, NONE};
@@ -210,6 +213,30 @@ void makeGraph() {
     }
 }
 
+int bfs_numSteps(int s) {
+    queue<int> q;
+    q.push(s);
+    vector<bool> used(N*N*N*N, false);
+    vector<int> d(N*N*N*N), p(N*N*N*N);
+    used[s] = true;
+    p[s] = -1;
+    d[s] = 0;
+    while (!q.empty()) {
+        int v = q.front();
+        q.pop();
+        for (auto to : G[v]) {
+            if (!used[to]) {
+                used[to] = true;
+                q.push (to);
+                d[to] = d[v] + 1;
+                p[to] = v;
+            }
+        }
+    }
+    return d[0];
+}
+
+
 int main() {
 
     ifstream fin("input.txt");
@@ -218,8 +245,11 @@ int main() {
     makeGraph();
 
     ofstream fout("output.txt");
-    fout << tryFind();
 
+    int s = find(vertecies.begin(), vertecies.end(), Vertex(R1, C1, R2, C2)) - vertecies.begin();
+    fout << bfs_numSteps(s);
+
+    fout.close();
 
     return 0;
 }
