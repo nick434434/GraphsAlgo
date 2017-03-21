@@ -1,18 +1,102 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 using std::cout;
 using std::endl;
 using std::vector;
 using std::ifstream;
 using std::ofstream;
+using std::find;
+using std::pair;
+using std::make_pair;
 
 
-vector<vector<int>> G1, G2;
-unsigned int N;
+enum Shifts {RIGHT, DOWN, LEFT, UP, NONE};
+
+class Vertex {
+public:
+    int i1, j1, i2, j2;
+
+    Vertex() {
+        i1 = -1;
+        j1 = -1;
+        i2 = -1;
+        j2 = -1;
+    }
+
+    Vertex(int a, int b, int c, int d) {
+        i1 = a;
+        j1 = b;
+        i2 = c;
+        j2 = d;
+    }
+
+    void move(Shifts shift, bool isSecond) {
+        switch (shift) {
+            case RIGHT: {
+                j1 += (1 - (int)isSecond)*1; j2 += (int)isSecond*1;
+                break;
+            }
+            case LEFT: {
+                j1 += (1 - (int)isSecond)*(-1); j2 += (int)isSecond*(-1);
+                break;
+            }
+            case UP: {
+                i1 += (1 - (int)isSecond)*(-1); i2 += (int)isSecond*(-1);
+                break;
+            }
+            case DOWN: {
+                i1 += (1 - (int)isSecond)*1; i2 += (int)isSecond*1;
+                break;
+            }
+            default: {
+                i1 = -1;
+                j1 = -1;
+                i2 = -1;
+                j2 = -1;
+            }
+        }
+    }
+
+    const bool operator==(Vertex v) {
+        return (this->i1 == v.i1) && (this->i2 == v.i2) && (this->j1 == v.j1) && (this->j2 == v.j2);
+    }
+
+    const bool operator!=(Vertex v) {
+        return !(*this == v);
+    }
+};
+
+Shifts shifts[4] = {RIGHT, DOWN, LEFT, UP};
+vector<Vertex> vertecies;
+vector<vector<int>> G1, G2, G;
+int N;
 unsigned int R1, C1, R2, C2;
 
+
+
+
+Shifts reverseShift(Shifts shift) {
+    switch (shift) {
+        case RIGHT: return LEFT;
+        case LEFT: return RIGHT;
+        case UP: return DOWN;
+        case DOWN: return UP;
+        default: return NONE;
+    }
+}
+
+Vertex add(Vertex v1, Vertex v2) {
+    return Vertex((v1.i1 + v2.i1 >= N) ? N - 1 : v1.i1 + v2.i1, (v1.j1 + v2.j1 >= N) ? N - 1 : v1.j1 + v2.j1,
+                  (v1.i2 + v2.i2 >= N) ? N - 1 : v1.i2 + v2.i2, (v1.j2 + v2.j2 >= N) ? N - 1 : v1.j2 + v2.j2);
+}
+
+Vertex sub(Vertex v1, Vertex v2) {
+    return Vertex((v1.i1 - v2.i1 < 0) ? 0 : v1.i1 - v2.i1, (v1.j1 - v2.j1 < 0) ? 0 : v1.j1 - v2.j1,
+                  (v1.i2 - v2.i2 < 0) ? 0 : v1.i2 - v2.i2, (v1.j2 - v2.j2 < 0) ? 0 : v1.j2 - v2.j2);
+}
 
 vector<vector<int>> operator+(vector<vector<int>> lhs, vector<vector<int>> rhs) {
     vector<vector<int>> res = {};
@@ -43,7 +127,7 @@ void inputGraphs(ifstream& fin) {
     for (size_t i = 0; i < N; i++) {
         G2[i].resize(N);
         for (size_t j = 0; j < N; j++)
-            fin >> G1[i][j];
+            fin >> G2[i][j];
     }
     fin.close();
 }
@@ -60,14 +144,82 @@ unsigned int tryFind() {
     return numSteps;
 }
 
+Vertex move(Vertex v, Shifts shift) {
+    switch (shift) {
+        case RIGHT: {
+            return add(v, Vertex(0, 1, 0, 1));
+        }
+        case DOWN: {
+            return add(v, Vertex(1, 0, 1, 0));
+        }
+        case LEFT: {
+            return sub(v, Vertex(0, 1, 0, 1));
+        }
+        case UP: {
+            return sub(v, Vertex(1, 0, 1, 0));
+        }
+        default:
+            return Vertex();
+    }
+}
+
+void makeGraph() {
+    vertecies.resize(N*N*N*N, Vertex());
+    int cnt = 0;
+
+    for (size_t i1 = 0; i1 < N; i1++)
+        for (size_t j1 = 0; j1 < N; j1++)
+            for (size_t i2 = 0; i2 < N; i2++)
+                for (size_t j2 = 0; j2 < N; j2++) {
+                    auto it = find(vertecies.begin(), vertecies.end(), Vertex(i1, j1, i2, j2));
+                    int x = 0;
+                    if (it != vertecies.end())
+                        x = it - vertecies.begin();
+                    else
+                        x = cnt++;
+                    vertecies[x] = Vertex(i1, j1, i2, j2);
+                }
+
+    G.resize(N*N*N*N);
+    for (size_t v = 0; v < N*N*N*N; v++) {
+        G[v].reserve(4);
+        if (G1[vertecies[v].i1][vertecies[v].j1] == 1 || G2[vertecies[v].i2][vertecies[v].j2] == 1)
+            continue;
+
+        for (auto& shift : shifts) {
+            Vertex to = move(vertecies[v], shift);
+            if (to != Vertex()) {
+                if (G1[to.i1][to.j1] == 0 && G2[to.i2][to.j2] == 0) {
+                    G[v].push_back(find(vertecies.begin(), vertecies.end(), to) - vertecies.begin());
+                    continue;
+                }
+                if (G1[to.i1][to.j1] == 1 && G2[to.i2][to.j2] == 0) {
+                    to.move(reverseShift(shift), 0);
+                    if (vertecies[v] != to)
+                        G[v].push_back(find(vertecies.begin(), vertecies.end(), to) - vertecies.begin());
+                    continue;
+                }
+                if (G1[to.i1][to.j1] == 0 && G2[to.i2][to.j2] == 1) {
+                    to.move(reverseShift(shift), 1);
+                    if (vertecies[v] != to)
+                        G[v].push_back(find(vertecies.begin(), vertecies.end(), to) - vertecies.begin());
+                    continue;
+                }
+            }
+        }
+    }
+}
 
 int main() {
 
     ifstream fin("input.txt");
     inputGraphs(fin);
 
+    makeGraph();
+
     ofstream fout("output.txt");
     fout << tryFind();
+
 
     return 0;
 }
