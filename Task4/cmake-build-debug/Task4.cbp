@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/Git_Repo/GraphsAlgo/Task4/getCPUTime.h">
+			<Option target="Task4"/>
+		</Unit>
 		<Unit filename="D:/Git_Repo/GraphsAlgo/Task4/main.cpp">
 			<Option target="Task4"/>
 		</Unit>

@@ -3,7 +3,6 @@
 #include <fstream>
 #include <algorithm>
 
-
 using namespace std;
 
 
@@ -121,12 +120,10 @@ void makeGraph() {
                 if (f) {
                     edges.push_back(make_pair(v.first - crossings[k - 1].second - 1, make_pair(k - 1, k)));
                 }
-                if (find(crossings.begin(), crossings.end(), make_pair(h.first, v.first)) == crossings.end()) {
-                    crossings.push_back(make_pair(h.first, v.first));
-                    letters--;
-                    k++;
-                    f = true;
-                }
+                crossings.push_back(make_pair(h.first, v.first));
+                letters--;
+                k++;
+                f = true;
             }
         }
     }
@@ -165,16 +162,19 @@ void makeGraph() {
 
 int main() {
 
+    //double start = getCPUTime();
+
     inputWords("input.txt");
 
     makeGraph();
 
     Kruskal(edges);
 
-
     ofstream fout("output.txt");
     fout << letters;
     fout.close();
+
+    //cout << (getCPUTime() - start) << endl;
 
     return 0;
 }
