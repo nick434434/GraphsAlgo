@@ -1,0 +1,254 @@
+____14____
+-1-14-20: angle is 0, updating dist with 0
+____20____
+14-20-21: angle is 44.5854, updating dist with 44.5854
+14-20-14: angle is 0
+14-20-3: angle is 135.415, updating dist with 135.415
+14-20-15: angle is 0, updating dist with 0
+____15____
+20-15-20: angle is 0
+____21____
+20-21-2: angle is 8.53774e-007, updating dist with 44.5854
+20-21-25: angle is 103.686, updating dist with 148.271
+20-21-20: angle is 0
+20-21-16: angle is 76.3144, updating dist with 120.9
+____2____
+21-2-21: angle is 0
+____16____
+21-16-21: angle is 0
+____3____
+20-3-20: angle is 0
+____25____
+21-25-17: angle is 95.9595, updating dist with 244.23
+21-25-26: angle is 0, updating dist with 148.271
+21-25-22: angle is 84.0405, updating dist with 232.312
+21-25-21: angle is 0
+____26____
+25-26-18: angle is 68.2686, updating dist with 216.54
+25-26-19: angle is 0, updating dist with 148.271
+25-26-25: angle is 0
+25-26-22: angle is 111.731, updating dist with 260.002
+____19____
+26-19-0: angle is 34.2817, updating dist with 182.553
+26-19-8: angle is 0, updating dist with 148.271
+26-19-18: angle is 145.718, updating dist with 293.989
+26-19-26: angle is 0
+____8____
+19-8-27: angle is 131.17, updating dist with 279.441
+19-8-9: angle is 123.119, updating dist with 271.39
+19-8-19: angle is 0
+____0____
+19-0-19: angle is 0
+____18____
+26-18-19: angle is 102.55, updating dist with 319.09
+26-18-6: angle is 0, updating dist with 216.54
+26-18-26: angle is 0
+26-18-17: angle is 77.4497, updating dist with 293.989
+____6____
+18-6-18: angle is 0
+____22____
+25-22-25: angle is 0
+25-22-26: angle is 152.309, updating dist with 384.621
+25-22-23: angle is 0, updating dist with 232.312
+25-22-7: angle is 27.6908, updating dist with 260.002
+____23____
+22-23-22: angle is 0
+22-23-9: angle is 90.967, updating dist with 323.278
+22-23-7: angle is 89.033, updating dist with 321.345
+22-23-5: angle is 0, updating dist with 232.312
+____5____
+23-5-23: angle is 0
+23-5-7: angle is 177.986, updating dist with 410.297
+____17____
+25-17-18: angle is 130.241, updating dist with 374.472
+25-17-24: angle is 0, updating dist with 244.23
+25-17-25: angle is 0
+25-17-1: angle is 49.7589, updating dist with 293.989
+____24____
+17-24-4: angle is 0, updating dist with 244.23
+17-24-11: angle is 112.994, updating dist with 357.224
+17-24-17: angle is 0
+17-24-1: angle is 67.0061, updating dist with 311.237
+____4____
+24-4-24: angle is 0
+____7____
+22-7-22: angle is 0
+22-7-23: angle is 118.658, updating dist with 378.66
+22-7-5: angle is 29.7051, updating dist with 289.707
+____22____
+26-22-25: angle is 152.309, updating dist with 412.312
+26-22-26: angle is 0
+26-22-23: angle is 27.6908
+26-22-7: angle is 0
+____9____
+8-9-8: angle is 0
+8-9-23: angle is 49.955, updating dist with 321.345
+____27____
+8-27-8: angle is 0
+8-27-12: angle is 154.057, updating dist with 433.499
+8-27-10: angle is 0, updating dist with 279.441
+8-27-11: angle is 25.9428, updating dist with 305.384
+____10____
+27-10-27: angle is 0
+____5____
+7-5-23: angle is 177.986, updating dist with 467.693
+7-5-7: angle is 0
+____1____
+17-1-17: angle is 0
+17-1-24: angle is 162.753, updating dist with 456.742
+____18____
+19-18-19: angle is 0
+19-18-6: angle is 77.4497
+19-18-26: angle is 102.55, updating dist with 396.54
+19-18-17: angle is 0
+____17____
+18-17-18: angle is 0
+18-17-24: angle is 49.7589
+18-17-25: angle is 130.241, updating dist with 424.23
+18-17-1: angle is 0
+____11____
+27-11-27: angle is 0
+27-11-24: angle is 5.85246, updating dist with 311.237
+____1____
+24-1-17: angle is 162.753, updating dist with 473.989
+24-1-24: angle is 0
+____24____
+11-24-4: angle is 67.0061
+11-24-11: angle is 0
+11-24-17: angle is 112.994, updating dist with 424.23
+11-24-1: angle is 0
+____19____
+18-19-0: angle is 0
+18-19-8: angle is 34.2817
+18-19-18: angle is 0
+18-19-26: angle is 145.718, updating dist with 464.808
+____23____
+9-23-22: angle is 90.967, updating dist with 412.312
+9-23-9: angle is 0
+9-23-7: angle is 0, updating dist with 321.345
+9-23-5: angle is 89.033
+____7____
+23-7-22: angle is 118.658, updating dist with 440.002
+23-7-23: angle is 0
+23-7-5: angle is 91.0473
+____7____
+23-7 is used;
+____9____
+23-9-8: angle is 49.955, updating dist with 373.234
+23-9-23: angle is 0
+____11____
+24-11-27: angle is 5.85246, updating dist with 363.077
+24-11-24: angle is 0
+____27____
+11-27-8: angle is 25.9428, updating dist with 389.02
+11-27-12: angle is 0, updating dist with 363.077
+11-27-10: angle is 154.057
+11-27-11: angle is 0
+____12____
+27-12-27: angle is 0
+27-12-13: angle is 150.794, updating dist with 513.871
+____8____
+9-8-27: angle is 74.2888
+9-8-9: angle is 0
+9-8-19: angle is 123.119, updating dist with 496.352
+____18____
+17-18-19: angle is 0
+17-18-6: angle is 102.55
+17-18-26: angle is 77.4497
+17-18-17: angle is 0
+____23____
+7-23-22: angle is 89.033
+7-23-9: angle is 0
+7-23-7: angle is 0
+7-23-5: angle is 90.967
+____26____
+22-26-18: angle is 0
+22-26-19: angle is 68.2686
+22-26-25: angle is 111.731, updating dist with 496.352
+22-26-22: angle is 0
+____8____
+27-8-27: angle is 0
+27-8-9: angle is 74.2888
+27-8-19: angle is 131.17
+____26____
+18-26-18: angle is 0
+18-26-19: angle is 111.731
+18-26-25: angle is 68.2686, updating dist with 464.808
+18-26-22: angle is 0
+____7____
+5-7-22: angle is 29.7051
+5-7-23: angle is 91.0473
+5-7-5: angle is 0
+____25____
+22-25-17: angle is 0
+22-25-26: angle is 95.9595
+22-25-22: angle is 0
+22-25-21: angle is 84.0405, updating dist with 496.352
+____22____
+23-22-25: angle is 0
+23-22-26: angle is 27.6908
+23-22-23: angle is 0
+23-22-7: angle is 152.309
+____25____
+17-25-17: angle is 0
+17-25-26: angle is 84.0405
+17-25-22: angle is 0
+17-25-21: angle is 95.9595
+____17____
+24-17-18: angle is 49.7589
+24-17-24: angle is 0
+24-17-25: angle is 0
+24-17-1: angle is 130.241
+____12____
+27-12 is used;
+____22____
+7-22-25: angle is 27.6908
+7-22-26: angle is 0
+7-22-23: angle is 152.309
+7-22-7: angle is 0
+____24____
+1-24-4: angle is 112.994
+1-24-11: angle is 0
+1-24-17: angle is 67.0061
+1-24-1: angle is 0
+____25____
+26-25-17: angle is 84.0405
+26-25-26: angle is 0
+26-25-22: angle is 95.9595
+26-25-21: angle is 0, updating dist with 464.808
+____26____
+19-26-18: angle is 111.731
+19-26-19: angle is 0
+19-26-25: angle is 0
+19-26-22: angle is 68.2686
+____21____
+25-21-2: angle is 76.3144
+25-21-25: angle is 0
+25-21-20: angle is 103.686, updating dist with 568.494
+25-21-16: angle is 0
+____23____
+5-23-22: angle is 0
+5-23-9: angle is 89.033
+5-23-7: angle is 90.967
+5-23-5: angle is 0
+____17____
+1-17-18: angle is 0
+1-17-24: angle is 130.241
+1-17-25: angle is 49.7589
+1-17-1: angle is 0
+____25____
+26-25 is used;
+____21____
+25-21 is used;
+____19____
+8-19-0: angle is 145.718
+8-19-8: angle is 0
+8-19-18: angle is 34.2817
+8-19-26: angle is 0
+____13____
+12-13-12: angle is 0
+____20____
+21-20-21: angle is 0
+21-20-14: angle is 44.5854
+21-20-3: angle is 0
+21-20-15: angle is 135.415

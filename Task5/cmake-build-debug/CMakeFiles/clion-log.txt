@@ -1,0 +1,4 @@
+"C:\Program Files (x86)\JetBrains\CLion 2016.3.4\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\Git_Repo\GraphsAlgo\Task5
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/Git_Repo/GraphsAlgo/Task5/cmake-build-debug

@@ -13,10 +13,6 @@ vector
 -
 fstream
 -
-cmath
--
-list
--
 sstream
 -
 algorithm

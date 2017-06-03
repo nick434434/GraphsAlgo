@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Git_Repo/GraphsAlgo/Task5/main.cpp
+iostream
+-
+cmath
+-
+vector
+-
+map
+-
+fstream
+-
+cstdlib
+-
+algorithm
+-
+set
+-
+queue
+-
+

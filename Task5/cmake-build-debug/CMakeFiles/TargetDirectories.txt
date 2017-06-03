@@ -1,0 +1,3 @@
+D:/Git_Repo/GraphsAlgo/Task5/cmake-build-debug/CMakeFiles/Task5.dir
+D:/Git_Repo/GraphsAlgo/Task5/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Git_Repo/GraphsAlgo/Task5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
